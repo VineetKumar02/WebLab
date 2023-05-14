@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+
+<head>
+    <meta charset="utf-8">
+    <title>Navigation Menu</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular-route.min.js"></script>
+    <!-- <script src="app.js"></script> -->
+
+    <style>
+        /* CSS styles */
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #ff6179;
+        }
+
+        li {
+            float: left;
+        }
+
+        li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        li a:hover {
+            background-color: #111;
+        }
+    </style>
+</head>
+
+<body>
+    <div ng-controller="mainController">
+        <nav>
+            <ul>
+                <li ng-repeat="menuItem in menuItems">
+                    <a ng-href="{{menuItem.link}}">{{menuItem.name}}</a>
+                </li>
+            </ul>
+        </nav>
+        <div ng-view></div>
+    </div>
+</body>
+<script>
+    var app = angular.module("myApp", ["ngRoute"]);
+
+    app.config(function ($routeProvider) {
+        $routeProvider
+            .when("/home", {
+                templateUrl: "home.html",
+                controller: "homeController"
+            })
+            .when("/about", {
+                templateUrl: "about.html",
+                controller: "aboutController"
+            })
+            .when("/contact", {
+                templateUrl: "contact.html",
+                controller: "contactController"
+            })
+            .otherwise({
+                redirectTo: "/home"
+            });
+    });
+
+    app.controller("mainController", function ($scope) {
+        $scope.menuItems = [
+            { name: "Home", link: "!#/home" },
+            { name: "About", link: "#!/about" },
+            { name: "Contact", link: "#!/contact" }
+        ];
+    });
+
+    app.controller("homeController", function ($scope) {
+        $scope.message = "Welcome to the Home Page!";
+    });
+
+    app.controller("aboutController", function ($scope) {
+        $scope.message = "Learn more about us on the About Page!";
+    });
+
+    app.controller("contactController", function ($scope) {
+        $scope.message = "Contact us by filling out the form on the Contact Page!";
+    });
+
+</script>
+
+</html>

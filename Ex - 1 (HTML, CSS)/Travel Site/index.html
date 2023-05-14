@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- font awesome cdn -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <!-- fonts -->
+    <link rel="stylesheet" href="font/fonts.css">
+    <!-- normalize css -->
+    <link rel="stylesheet" href="css/normalize.css">
+    <!-- custom css -->
+    <link rel="stylesheet" href="css/utility.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+
+    <title>TripBoss</title>
+</head>
+
+<body>
+    <!-- navbar  -->
+    <nav class="navbar">
+        <div class="container flex">
+            <a href="index.html" class="site-brand">
+                Trip<span>Boss</span>
+            </a>
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a href="#" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#gallery" class="nav-link">Gallery</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#blog" class="nav-link">Blog</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#about" class="nav-link">About</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#contact" class="nav-link">Contact</a>
+                </li>
+            </ul>
+
+        </div>
+        </div>
+    </nav>
+    <!-- end of navbar  -->
+
+    <!-- header -->
+    <header class="flex">
+        <div class="container">
+            <h1 class="header-title">Leave Your Footprints</h1>
+            <div class="header-form">
+                <h2>Choose your Travel location:</h2>
+                <form class="flex">
+                    <input type="text" class="form-control" placeholder="Destination name">
+                    <input type="date" class="form-control" placeholder="Date">
+                    <input type="number" class="form-control" placeholder="Price ($)">
+                    <input type="submit" class="btn" value="Search">
+                </form>
+            </div>
+        </div>
+    </header>
+    <!-- header -->
+
+    <div id="Plans" class="py-2">
+        <div class="container">
+            <div class="title-wrap">
+                <h2>Popular Plans</h2>
+                <hr>
+                <span>Must visit Places!</span>
+            </div>
+
+            <h2>Find Your Location in below Map</h2>
+            <button class="btn" onclick="getlocation();"> Show Position</button>
+            <div id="map" style="width: 600px; height: 400px; display: block;"></div>
+
+            <script src="https://maps.google.com/maps/api/js?sensor=false"> </script>
+
+            <script type="text/javascript">
+                function getlocation() {
+                    if (navigator.geolocation) {
+                        navigator.geolocation.getCurrentPosition(showPos, showErr);
+                    }
+                    else {
+                        alert("Sorry! your Browser does not support Geolocation API")
+                    }
+                }
+                //Showing Current Poistion on Google Map  
+                function showPos(position) {
+                    latt = position.coords.latitude;
+                    long = position.coords.longitude;
+                    var lattlong = new google.maps.LatLng(latt, long);
+                    var myOptions = {
+                        center: lattlong,
+                        zoom: 15,
+                        mapTypeControl: true,
+                        navigationControlOptions: { style: google.maps.NavigationControlStyle.SMALL }
+                    }
+                    var maps = new google.maps.Map(document.getElementById("map"), myOptions);
+                    var markers =
+                        new google.maps.Marker({ position: lattlong, map: maps, title: "You are here!" });
+                }
+
+                //Handling Error and Rejection  
+                function showErr(error) {
+                    switch (error.code) {
+                        case error.PERMISSION_DENIED:
+                            alert("User denied the request for Geolocation API.");
+                            break;
+                        case error.POSITION_UNAVAILABLE:
+                            alert("USer location information is unavailable.");
+                            break;
+                        case error.TIMEOUT:
+                            alert("The request to get user location timed out.");
+                            break;
+                        case error.UNKNOWN_ERROR:
+                            alert("An unknown error occurred.");
+                            break;
+                    }
+                }        </script>
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>City</th>
+                        <th>Country</th>
+                        <th>Discount</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Paris</td>
+                        <td>France</td>
+                        <td>20%</td>
+                    </tr>
+                    <tr>
+                        <td>Tokyo</td>
+                        <td>Japan</td>
+                        <td>25%</td>
+                    </tr>
+                    <tr>
+                        <td>New York</td>
+                        <td>USA</td>
+                        <td>30%</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+    <!-- gallery section -->
+    <div id="gallery" class="py-2">
+        <div class="container">
+            <div class="title-wrap">
+                <h2>Gallery</h2>
+                <hr>
+                <span>Some amazing clicks to wow you!</span>
+            </div>
+            <div class="gallery-row">
+                <div class="gallery-item shadow">
+                    <img src="images/gallery-4.jpg" alt="gallery img">
+                    <span class="zoom-icon">
+                        <i class="fas fa-search-plus"></i>
+                    </span>
+                </div>
+                <div class="gallery-item shadow">
+                    <img src="images/gallery-5.jpg" alt="gallery img">
+                    <span class="zoom-icon">
+                        <i class="fas fa-search-plus"></i>
+                    </span>
+                </div>
+                <div class="gallery-item shadow">
+                    <img src="images/gallery-6.jpg" alt="gallery img">
+                    <span class="zoom-icon">
+                        <i class="fas fa-search-plus"></i>
+                    </span>
+                </div>
+                <div class="gallery-item shadow">
+                    <img src="images/gallery-7.jpg" alt="gallery img">
+                    <span class="zoom-icon">
+                        <i class="fas fa-search-plus"></i>
+                    </span>
+                </div>
+                <div class="gallery-item shadow">
+                    <img src="images/gallery-8.jpg" alt="gallery img">
+                    <span class="zoom-icon">
+                        <i class="fas fa-search-plus"></i>
+                    </span>
+                </div>
+                <div class="gallery-item shadow">
+                    <img src="images/gallery-9.jpg" alt="gallery img">
+                    <span class="zoom-icon">
+                        <i class="fas fa-search-plus"></i>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end of gallery section -->
+
+
+    <!-- blog section -->
+    <section id="blog" class="py-2">
+        <div class="container">
+            <div class="title-wrap">
+                <h3>recent blog</h3>
+                <hr>
+                <span>read these blog for information</span>
+            </div>
+
+            <div class="blog-row">
+                <div class="blog-item my-2 shadow">
+                    <div class="blog-item-top">
+                        <img src="images/blog-1.jpg" alt="blog">
+                        <span class="blog-date">oct 28, 2021</span>
+                    </div>
+                    <div class="blog-item-bottom">
+                        <span>travel | john doe</span>
+                        <a href="#">Lorem, ipsum dolor sit amet consectetur adipisicing elit?</a>
+                        <p class="text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio voluptatem
+                            nulla harum accusantium tempora dicta quas quod id, repellat temporibus illo libero
+                            explicabo laboriosam.</p>
+                    </div>
+                </div>
+
+                <div class="blog-item my-2 shadow">
+                    <div class="blog-item-top">
+                        <img src="images/blog-2.jpg" alt="blog">
+                        <span class="blog-date">oct 28, 2021</span>
+                    </div>
+                    <div class="blog-item-bottom">
+                        <span>travel | john doe</span>
+                        <a href="#">Lorem, ipsum dolor sit amet consectetur adipisicing elit?</a>
+                        <p class="text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio voluptatem
+                            nulla harum accusantium tempora dicta quas quod id, repellat temporibus illo libero
+                            explicabo laboriosam.</p>
+                    </div>
+                </div>
+
+                <div class="blog-item my-2 shadow">
+                    <div class="blog-item-top">
+                        <img src="images/blog-3.jpg" alt="blog">
+                        <span class="blog-date">oct 28, 2021</span>
+                    </div>
+                    <div class="blog-item-bottom">
+                        <span>travel | john doe</span>
+                        <a href="#">Lorem, ipsum dolor sit amet consectetur adipisicing elit?</a>
+                        <p class="text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio voluptatem
+                            nulla harum accusantium tempora dicta quas quod id, repellat temporibus illo libero
+                            explicabo laboriosam.</p>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </section>
+    <!-- end of blog section -->
+
+    <!-- about section -->
+    <section id="about" class="py-2">
+        <div class="container">
+            <div class="title-wrap">
+                <h2>our story</h2>
+                <hr>
+                <span>things to know about us</span>
+            </div>
+
+            <div class="about-row">
+                <div class="about-left my-2">
+                    <img src="images/about-img.jpg" alt="about img">
+                </div>
+                <div class="about-right">
+                    <h2>15 Years of Experience</h2>
+                    <p class="text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae vitae sed aperiam
+                        qui repudiandae earum voluptatem. Modi at inventore omnis veniam necessitatibus exercitationem
+                        vel nesciunt delectus ex officiis, culpa doloremque odit illo saepe placeat. Delectus
+                        consequuntur reprehenderit omnis accusantium officiis!</p>
+                    <p class="text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique explicabo
+                        blanditiis quidem consequuntur qui quaerat fuga iste tenetur consequatur porro. Aliquam maiores
+                        alias doloribus at quisquam quo numquam perferendis. Odit!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end of about section -->
+
+    <br><br>
+
+    <!-- contact section -->
+    <section id="contact" class="py-2">
+        <div class="container">
+            <div class="title-wrap">
+                <h2>contact us</h2>
+                <hr>
+                <span>get in touch with us</span>
+            </div>
+
+            <div class="contact-row">
+                <div class="contact-left">
+                    <form class="contact-form">
+                        <input type="text" class="form-control" placeholder="Your name">
+                        <input type="email" class="form-control" placeholder="Your email">
+                        <textarea rows="4" class="form-control" placeholder="Your message"
+                            style="resize: none;"></textarea>
+                        <input type="submit" class="btn" value="Send message">
+                    </form>
+                </div>
+                <div class="contact-right my-2">
+                    <div class="contact-item">
+                        <span class="contact-icon flex">
+                            <i class="fa fa-phone-alt"></i>
+                        </span>
+                        <div>
+                            <span>Phone</span>
+                            <p class="text">+01-584-886-009</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-icon flex">
+                            <i class="fa fa-map-marked-alt"></i>
+                        </span>
+                        <div>
+                            <span>Address</span>
+                            <p class="text">102 East 22nd Street, NY</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-icon flex">
+                            <i class="fa fa-envelope"></i>
+                        </span>
+                        <div>
+                            <span>Message</span>
+                            <p class="text">info@tripboss.com</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end of contact section -->
+
+    <!-- video section -->
+    <section id="video">
+        <div class="video-wrapper flex">
+            <video loop>
+                <source src="videos/video-section.mp4" type="video/mp4">
+            </video>
+            <button type="button" id="play-btn">
+                <i class="fas fa-play"></i>
+            </button>
+        </div>
+    </section>
+    <!-- end of video section -->
+
+    <!-- footer -->
+    <footer class="py-2">
+        <div class="container footer-row">
+            <div class="footer-item">
+                <a href="index.html" class="site-brand">
+                    Trip<span>Boss</span>
+                </a>
+                <p class="text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet voluptates maiores nam
+                    vitae iusto. Placeat rem sint voluptas natus exercitationem autem quod neque, odit laudantium
+                    reiciendis ipsa suscipit veritatis voluptate.</p>
+            </div>
+
+            <div class="footer-item">
+                <h2>Follow us on: </h2>
+                <ul class="social-links">
+                    <li>
+                        <a href="#">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fab fa-pinterest"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fab fa-google-plus"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="footer-item">
+                <h2>Popular Places:</h2>
+                <ul>
+                    <li><a href="#">Thailand</a></li>
+                    <li><a href="#">Australia</a></li>
+                    <li><a href="#">Maldives</a></li>
+                    <li><a href="#">Switzerland</a></li>
+                    <li><a href="#">Germany</a></li>
+                </ul>
+            </div>
+
+            <div class="subscribe-form footer-item">
+                <h2>Subscribe for Newsletter!</h2>
+                <form class="flex">
+                    <input type="email" placeholder="Enter Email" class="form-control">
+                    <input type="submit" class="btn" value="Subscribe">
+                </form>
+            </div>
+        </div>
+    </footer>
+    <!-- end of footer -->
+
+    <!-- js -->
+    <script src="js/script.js"></script>
+    <script>
+        // play/pause video
+        let video = document.querySelector('.video-wrapper video');
+        document.getElementById('play-btn').addEventListener('click', () => {
+            if (video.paused) {
+                video.play();
+            } else {
+                video.pause();
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,	initial- scale=1.0">
+    <title>DOM Manipulation</title>
+
+    <style>
+        body {
+            background-color: lightskyblue
+        }
+
+        .container {
+            border: 1px solid black;
+            padding: 50px;
+            margin: 100px 300px;
+            background-color: white;
+            border-radius: 10px;
+            width: 50vw;
+        }
+
+        button {
+            font-weight: 500;
+            border: 1px solid transparent;
+            padding: 0.5rem 1rem;
+            font-size: 1rem;
+            border-radius: 0.25rem;
+            margin-left: 15px;
+            transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+            cursor: pointer;
+
+            color: #fff;
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+
+        button:hover {
+            background-color: #0069d9;
+            border-color: #0062cc;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <center>
+            <h2>DOM MANIPULATION</h2>
+        </center>
+        <p class="master2">I love to roam</p>
+        <p class="master2">I love cooking</p>
+        <p class="master2">I love money</p>
+        <h1 class="master2">I want a job</h1>
+        <button id="btn">Tap to Change DOM</button>
+    </div>
+    <script>
+        const btn = document.getElementById('btn');
+        btn.addEventListener('click', function master() {
+            var master = document.getElementsByClassName("master2");
+            master[2].innerHTML = 'To earn money';
+            master[3].innerHTML = 'I need a job';
+        })
+    </script>
+</body>
+
+</html>

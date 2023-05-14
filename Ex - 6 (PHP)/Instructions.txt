@@ -1,0 +1,10 @@
+1) Place the Folder "Database_connection" in :-
+C:\xampp\htdocs
+
+2) Start XAMPP and start the Apache & MySQL.
+
+3) Open Apache Admin to see list of folders in htdocs. Open "Database_connection".
+					(or)
+   Navigate to your browser and type in “localhost/Database_connection/” in the address bar to view the output.
+
+4) Open MySQL admin to look at database.

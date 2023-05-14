@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Components, Controller, Services</title>
+
+    <!-- load AngularJS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+
+    <!-- load our custom AngularJS code -->
+    <script src="app.js"></script>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body ng-controller="myController">
+    <div class="container">
+        <h1>Components:-</h1>
+        <my-component></my-component>
+
+        <br><br>
+
+        <h1>Services:-</h1>
+        <h2>Welcome to {{ title }}</h2>
+        <p>{{ message }}</p>
+
+        <br>
+        <h1>Controller Used:-</h1>
+        <p>myController</p>
+    </div>
+</body>
+
+</html>

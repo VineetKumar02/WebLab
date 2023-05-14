@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation</title>
+
+    <style>
+        form {
+            text-align: center;
+            width: 30%;
+            margin: 100px 34%;
+        }
+
+        legend {
+            font-size: x-large;
+        }
+
+        fieldset {
+            border: 3px solid #4CAF50;
+        }
+
+        input {
+            padding: 10px;
+            font-size: 1.2em;
+        }
+
+        input[type='submit'] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px 30px;
+            margin: 4px 2px;
+            text-decoration: none;
+            border: none;
+            font-size: 1.5em;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <form onsubmit="return validate()">
+        <fieldset>
+            <legend>Form Validation</legend>
+            <p><input type="text" id="phone-number" placeholder="phone number" /></p>
+            <p><input type="text" id="pin-code" placeholder="pin code" /></p>
+            <p><input type="text" id="email-id" placeholder="email id" /></p>
+            <p><input type="submit" /></p>
+        </fieldset>
+    </form>
+</body>
+
+<script>
+
+    function validate() {
+        var phoneNumber = document.getElementById('phone-number').value;
+        var postalCode = document.getElementById('pin-code').value;
+        var emailId = document.getElementById('email-id').value;
+
+        var phoneRGEX = /^\d{10}$/;
+        var postalRGEX = /^\d{6}$/;
+        var emailRGEX = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+
+        var phoneResult = phoneRGEX.test(phoneNumber);
+        var postalResult = postalRGEX.test(postalCode);
+        var emailResult = emailRGEX.test(emailId);
+
+        if (phoneResult == false) {
+            alert('Please enter a valid phone number');
+            return false;
+        }
+
+        if (postalResult == false) {
+            alert('Please enter a valid pin code');
+            return false;
+        }
+        if (emailResult == false) {
+            alert('Please enter a valid email id');
+            return false;
+        }
+        alert("Form Submitted Successfully");
+        return true;
+    }
+</script>
+
+</html>

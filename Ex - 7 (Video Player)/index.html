@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html ng-app="videoPlayer">
+
+<head>
+    <title>AngularJS Video Player</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <style>
+        button {
+            width: 10rem;
+            padding: 1rem 2rem;
+            margin: 10px;
+            cursor: pointer;
+            color: white;
+            background-color: dodgerblue;
+            border-radius: 12px;
+            border: none;
+        }
+
+        button:hover {
+            background-color: royalblue;
+        }
+    </style>
+</head>
+
+<body ng-controller="videoPlayerCtrl">
+    <h1>AngularJS Video Player</h1>
+    <video ng-src="{{videoUrl}}" controls></video>
+    <br>
+    <button ng-click="play()">Play</button>
+    <button ng-click="pause()">Pause</button>
+    <button ng-click="replay()">Replay</button>
+    <script>
+        var app = angular.module("videoPlayer", []); app.controller("videoPlayerCtrl", function ($scope) {
+
+            $scope.videoUrl = "https://res.cloudinary.com/codelife/video/upload/v1637805738/intro_l5ul1k.mp4";
+            var video = document.getElementsByTagName("video")[0];
+            $scope.play = function () {
+                video.play();
+            };
+            $scope.pause = function () {
+                video.pause();
+            };
+            $scope.replay = function () {
+                video.currentTime = 0; 
+                video.pause();
+            };
+        });
+    </script>
+</body>
+
+</html>

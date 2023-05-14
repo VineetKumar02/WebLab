@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Simple Messaging Service</title>
+    <style>
+        /* CSS styles */
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        #chat {
+            height: 300px;
+            overflow-y: scroll;
+            border: 1px solid #ccc;
+            padding: 10px;
+            width: 50%;
+            margin-bottom: 30px;
+        }
+
+        #message {
+            width: 30%;
+            box-sizing: border-box;
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
+
+        #send-button {
+            background-color: #9b55c9;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            width: 10%;
+        }
+
+        #send-button:hover {
+            background-color: #a663d2;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Simple Messaging Service</h1>
+    <div id="chat"></div>
+    <div class="box">
+        <input type="text" id="message" placeholder="Type your message...">
+        <button id="send-button">Send</button>
+    </div>
+    <script>
+        var chat = document.getElementById("chat");
+        var messageInput = document.getElementById("message"); var sendButton = document.getElementById("send-button"); sendButton.addEventListener("click", function () {
+            var message = document.createElement("div"); message.innerText = messageInput.value; chat.appendChild(message); messageInput.value = "";
+            chat.scrollTop = chat.scrollHeight;
+        });
+    </script>
+</body>
+
+</html>

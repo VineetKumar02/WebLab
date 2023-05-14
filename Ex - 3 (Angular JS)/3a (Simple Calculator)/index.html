@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html ng-app>
+
+<head>
+    <title>Calculator</title>
+    <script data-require="angular.js@1.0.7" data-semver="1.0.7"
+        src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.js"></script>
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js"></script>
+</head>
+
+<body>
+    <div ng-app="Calculator" class="container">
+        <h1>AngularJS calculator</h1>
+        <div ng-controller="CalculatorCtrl">
+            <table>
+                <tr>
+                    <td>a = <input ng-model="a"></td>
+                    <td>
+                        <button class="command" ng-click="inca()">+1</button>
+                        <button class="command" ng-click="deca()">-1</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>b = <input ng-model="b"></td>
+                    <td>
+                        <button class="command" ng-click="incb()">+1</button>
+                        <button class="command" ng-click="decb()">-1</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span>Operation:</span>
+                        <select ng-model="operation">
+                            <option value="+">+</option>
+                            <option value="-">-</option>
+                            <option value="*">*</option>
+                            <option value="/">/</option>
+                        </select>
+                    </td>
+                </tr>
+            </table>
+            <b class="result">{{na()}} {{operation}} {{nb()}} = {{calculate()}}</b>
+        </div>
+    </div>
+</body>
+
+</html>

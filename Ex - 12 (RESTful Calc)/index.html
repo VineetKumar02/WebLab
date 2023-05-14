@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Calculator using RESTful Web Services</h1>
+        <form>
+            <p> A = <input type="number" name="num1" required></p>
+            <br><br>
+            <select name="operator" required>
+                <option value="add">+</option>
+                <option value="subtract">-</option>
+                <option value="multiply">*</option>
+                <option value="divide">/</option>
+            </select> <br><br>
+            <input type="number" name="num2" required> <br><br>
+            <input type="submit" value="Calculate">
+        </form>
+        <p>Result: <span id="result"></span></p>
+    </div>
+    <script src="app.js"></script>
+</body>
+
+</html>

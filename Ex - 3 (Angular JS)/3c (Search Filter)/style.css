@@ -1,0 +1,46 @@
+body {
+    width: 100vh;
+    height: 100vh;
+    background: linear-gradient(to right, rgb(5, 117, 230), rgb(13, 75, 160));
+}
+
+.container {
+    background-color: white;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 50vw;
+    margin: 30px 300px;
+}
+h3 {
+    position: relative;
+    top: 10px;
+    left: -75px;
+}
+
+.search-bar {
+    padding: 10px 15px;
+    font-size: 16px;
+    width: 250px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.my-table {
+    border-collapse: collapse;
+    margin: 30px auto;
+}
+
+.my-table th,
+.my-table td {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: center;
+}
+
+.my-table th {
+    background-color: #f2f2f2;
+    color: black;
+}

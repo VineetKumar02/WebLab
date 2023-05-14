@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+
+<head>
+    <meta charset="utf-8">
+    <title>Switch between layouts with AngularJS</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+
+    <style>
+        body {
+            width: 100vh;
+            height: 100vh;
+            background: linear-gradient(to right, rgb(5, 117, 230), rgb(13, 75, 160));
+        }
+
+        .container {
+            background-color: white;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            width: 60%;
+            padding: 50px;
+            position: relative;
+            margin: 50px auto;
+        }
+
+        button {
+            width: 10rem;
+            padding: 1rem 2rem;
+            margin: 10px;
+            cursor: pointer;
+            color: white;
+            background-color: dodgerblue;
+            border-radius: 12px;
+            border: none;
+        }
+
+        button:hover {
+            background-color: royalblue;
+        }
+
+        ul,
+        ol {
+            display: table;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div ng-controller="mainController" class="container">
+        <button ng-click="setTemplate('template1.html')">Layout 1</button>
+        <button ng-click="setTemplate('template2.html')">Layout 2</button>
+        <br><br>
+        <hr>
+        <div ng-include="templateUrl"></div>
+    </div>
+
+    <script>
+        var app = angular.module("myApp", []);
+
+        app.controller("mainController", function ($scope) {
+            $scope.templateUrl = "template1.html";
+            $scope.setTemplate = function (url) {
+                $scope.templateUrl = url;
+            }
+        });
+    </script>
+
+</body>
+
+</html>

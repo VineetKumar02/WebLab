@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Angular JS Table</title>
+
+    <!-- load AngularJS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+
+    <!-- load our custom AngularJS code -->
+    <script src="app.js"></script>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div ng-app="myApp" ng-controller="myCtrl">
+        <div class="container">
+            <h2>Angular JS Filters</h2>
+            <h3>Search Student:</h3>
+            <input class="search-bar" type="text" ng-model="search.name" placeholder="Search by name..." />
+            <input class="search-bar" type="number" ng-model="search.age" placeholder="Search by age..." />
+            <input class="search-bar" type="text" ng-model="search.grade" placeholder="Search by grade..." />
+            <table class="my-table">
+                <thead>
+                    <tr>
+                        <th>Student Name</th>
+                        <th>Age</th>
+                        <th>Gender</th>
+                        <th>Grade</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="student in students | filter:search">
+                        <td>{{student.name}}</td>
+                        <td>{{student.age}}</td>
+                        <td>{{student.gender}}</td>
+                        <td>{{student.grade}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+
+</html>
