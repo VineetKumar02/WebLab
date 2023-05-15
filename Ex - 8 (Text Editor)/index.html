@@ -38,18 +38,20 @@
         <h2>Saved Text:</h2>
         <p>{{ savedText }}</p>
     </div>
-    <script>
-        var app = angular.module("textEditor", []); app.controller("textEditorCtrl", function ($scope) {
-            $scope.text = "";
-            $scope.savedText = "";
-            $scope.clear = function () {
-                $scope.text = "";
-            };
-            $scope.save = function () {
-                $scope.savedText = $scope.text;
-            };
-        });
-    </script>
 </body>
+
+<script>
+    var app = angular.module("textEditor", []);
+    app.controller("textEditorCtrl", function ($scope) {
+        $scope.text = "";
+        $scope.savedText = "";
+        $scope.clear = function () {
+            $scope.text = "";
+        };
+        $scope.save = function () {
+            $scope.savedText = $scope.text;
+        };
+    });
+</script>
 
 </html>

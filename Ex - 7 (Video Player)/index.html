@@ -30,8 +30,9 @@
     <button ng-click="pause()">Pause</button>
     <button ng-click="replay()">Replay</button>
     <script>
-        var app = angular.module("videoPlayer", []); app.controller("videoPlayerCtrl", function ($scope) {
+        var app = angular.module("videoPlayer", []);
 
+        app.controller("videoPlayerCtrl", function ($scope) {
             $scope.videoUrl = "https://res.cloudinary.com/codelife/video/upload/v1637805738/intro_l5ul1k.mp4";
             var video = document.getElementsByTagName("video")[0];
             $scope.play = function () {
@@ -41,7 +42,7 @@
                 video.pause();
             };
             $scope.replay = function () {
-                video.currentTime = 0; 
+                video.currentTime = 0;
                 video.pause();
             };
         });

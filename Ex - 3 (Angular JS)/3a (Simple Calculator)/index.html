@@ -15,14 +15,14 @@
         <div ng-controller="CalculatorCtrl">
             <table>
                 <tr>
-                    <td>a = <input ng-model="a"></td>
+                    <td>a = <input ng-model="a" type="number"></td>
                     <td>
                         <button class="command" ng-click="inca()">+1</button>
                         <button class="command" ng-click="deca()">-1</button>
                     </td>
                 </tr>
                 <tr>
-                    <td>b = <input ng-model="b"></td>
+                    <td>b = <input ng-model="b" type="number"></td>
                     <td>
                         <button class="command" ng-click="incb()">+1</button>
                         <button class="command" ng-click="decb()">-1</button>
@@ -40,7 +40,7 @@
                     </td>
                 </tr>
             </table>
-            <b class="result">{{na()}} {{operation}} {{nb()}} = {{calculate()}}</b>
+            <b class="result">{{a}} {{operation}} {{b}} = {{calculate()}}</b>
         </div>
     </div>
 </body>
