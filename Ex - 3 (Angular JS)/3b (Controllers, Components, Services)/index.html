@@ -8,10 +8,22 @@
     <!-- load AngularJS -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
 
-    <!-- load our custom AngularJS code -->
-    <script src="app.js"></script>
+    <style>
+        body {
+            width: 100vh;
+            height: 100vh;
+            background: linear-gradient(to right, rgb(5, 117, 230), rgb(13, 75, 160));
+        }
 
-    <link rel="stylesheet" href="style.css">
+        .container {
+            border: 1px solid black;
+            padding: 50px;
+            margin: 50px 300px;
+            background-color: white;
+            border-radius: 10px;
+            width: 40vw;
+        }
+    </style>
 </head>
 
 <body ng-controller="myController">
@@ -24,11 +36,45 @@
         <h1>Services:-</h1>
         <h2>Welcome to {{ title }}</h2>
         <p>{{ message }}</p>
+        <p>Result: {{ result }}</p>
 
         <br>
         <h1>Controller Used:-</h1>
         <p>myController</p>
     </div>
 </body>
+
+<script>
+    app = angular.module('myApp', []);
+
+
+    app.component('myComponent', {
+        templateUrl: 'my-component.html',
+        controller: 'customController',
+
+    });
+
+    app.service('myService', function () {
+        this.getMessage = function () {
+            return "This is a message from the service.";
+        };
+
+        this.calculateSum = function (num1, num2) {
+            return num1 + num2;
+        };
+    })
+
+    app.controller('myController', function ($scope, myService) {
+        $scope.title = "My AngularJS App";
+        $scope.message = myService.getMessage();
+        $scope.result = myService.calculateSum(5, 3);
+    });
+
+    app.controller('customController', function ($scope) {
+        $scope.name = "Vineet";
+
+    });
+
+</script>
 
 </html>

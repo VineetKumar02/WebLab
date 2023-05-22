@@ -45,21 +45,25 @@
 <body>
     <h1>Simple Messaging Service</h1>
     <div id="chat"></div>
+
     <div class="box">
         <input type="text" id="message" placeholder="Type your message...">
         <button id="send-button">Send</button>
     </div>
+
     <script>
         var chat = document.getElementById("chat");
-        var messageInput = document.getElementById("message"); 
-        var sendButton = document.getElementById("send-button"); 
+        var messageInput = document.getElementById("message");
+        var sendButton = document.getElementById("send-button");
+
         sendButton.addEventListener("click", function () {
-            var message = document.createElement("div"); 
-            message.innerText = messageInput.value; 
-            chat.appendChild(message); 
+            var message = document.createElement("div");
+            message.innerText = messageInput.value;
+            chat.appendChild(message);
             messageInput.value = "";
             chat.scrollTop = chat.scrollHeight;
         });
+
     </script>
 </body>
 

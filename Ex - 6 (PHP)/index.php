@@ -40,7 +40,8 @@
         tr:nth-child(even) {
             background-color: #f2f2f2;
         }
-        @import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Convergence&family=Ubuntu:ital,wght@0,300;0,400;1,300&family=Varela+Round&display=swap');
 
 @import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
@@ -99,7 +100,7 @@ body {
     font-family: 'Ubuntu', sans-serif;
 }
 
-/*button css*/
+/button css/
 .btn {
     font-size: 18px;
     font-weight: bold;
@@ -160,7 +161,6 @@ body {
 </head>
 
 <body>
-    <div class="container ">
     <div class="glass_container studform">
 
       <form class="form" action="insert.php" method="post">
@@ -170,62 +170,47 @@ body {
         </div>
 
         <div class="input">
-          <label for="B/S">Branch/Section: </label>
-          <input type="text" id="BS" name="BS">
+          <label for="year">Email: </label>
+          <input type="email" id="email" name="email">
         </div>
 
         <div class="input">
-          <label for="year">Year of Joining: </label>
-          <input type="number" id="year" name="year">
-        </div>
-
-        <div class="input">
-          <label for="Mobile">Mobile Number: </label>
-          <input type="number" id="mobile" name="mobile">
-        </div>
-
-        <div class="input">
-          <label for="Gender">Gender: </label>
-          <input type="text" id="gender" name="gender">
+          <label for="Gender">Message: </label>
+          <input type="text" id="message" name="message">
         </div>
 
         <br>
         <center>
           <button type="submit" name="submit" class="btn">Submit</a>
-    </center>
+        </center>
       </form>
         <table>
             <tr>
                 <th>Name</th>
-                <th>Branch/Year</th>
-                <th>Year of Joining</th>
-                <th>Mobile</th>
-                <th>Gender</th>
+                <th>Email</th>
+                <th>Message</th>
             </tr>
             <?php
-            $conn = mysqli_connect("localhost", "root", "", "sdelab");
-            // Check connection
-            if ($conn->connect_error) {
-                die("Connection failed: " . $conn->connect_error);
-            }
-            $sql = "SELECT name,BS,year,mobile,gender FROM student_details";
-            $result = $conn->query($sql);
+            $conn = mysqli_connect("localhost", "root", "", "exam");
+
+            $sql = "SELECT * FROM contact";
+            
+            $result = mysqli_query($conn, $sql);
             if ($result->num_rows > 0) {
                 // output data of each row
                 while ($row = $result->fetch_assoc()) {
                     echo "<tr>
                             <td>" . $row["name"] . "</td>
-                            <td>" . $row["BS"] . "</td>
-                            <td>" . $row["year"] . "</td>
-                            <td>" . $row["mobile"] . "</td>
-                            <td>" . $row["gender"] . "</td>
+                            <td>" . $row["email"] . "</td>
+                            <td>" . $row["message"] . "</td>
                         </tr>";
                 }
-                echo "</table>";
-            } else {
+            } 
+            else 
+            {
                 echo "0 results";
             }
-            $conn->close();
+            mysqli_close($conn);
             ?>
         </table>
     </div>

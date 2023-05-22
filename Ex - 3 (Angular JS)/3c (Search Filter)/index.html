@@ -10,9 +10,6 @@
     <!-- load AngularJS -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
 
-    <!-- load our custom AngularJS code -->
-    <script src="app.js"></script>
-
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -45,5 +42,23 @@
         </div>
     </div>
 </body>
+
+<script>
+    var app = angular.module('myApp', []);
+    app.controller('myCtrl', function ($scope) {
+        $scope.students = [
+            { name: 'John', age: 18, gender: 'Male', grade: 'A' },
+            { name: 'Jane', age: 17, gender: 'Female', grade: 'B' },
+            { name: 'Bob', age: 19, gender: 'Male', grade: 'C' },
+            { name: 'Alice', age: 16, gender: 'Female', grade: 'A' },
+            { name: 'Charlie', age: 18, gender: 'Male', grade: 'B' },
+            { name: 'David', age: 17, gender: 'Male', grade: 'A' },
+            { name: 'Emily', age: 19, gender: 'Female', grade: 'C' },
+            { name: 'Frank', age: 16, gender: 'Male', grade: 'B' }
+        ];
+
+    });
+
+</script>
 
 </html>

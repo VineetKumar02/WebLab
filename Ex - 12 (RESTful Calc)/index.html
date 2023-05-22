@@ -2,28 +2,59 @@
 <html>
 
 <head>
-    <title>Calculator</title>
-    <link rel="stylesheet" href="style.css">
+    <title>RESTful API Calculator</title>
 </head>
 
 <body>
-    <div class="container">
-        <h1>Calculator using RESTful Web Services</h1>
-        <form>
-            <p> A = <input type="number" name="num1" required></p>
-            <br><br>
-            <select name="operator" required>
-                <option value="add">+</option>
-                <option value="subtract">-</option>
-                <option value="multiply">*</option>
-                <option value="divide">/</option>
-            </select> <br><br>
-            <input type="number" name="num2" required> <br><br>
-            <input type="submit" value="Calculate">
-        </form>
-        <p>Result: <span id="result"></span></p>
-    </div>
-    <script src="app.js"></script>
+    <h1>RESTful API Calculator</h1>
+
+    <form id="calculatorForm">
+
+        <label for="num1">Number 1:</label>
+        <input type="number" name="num1" id="num1" required>
+        <br>
+
+        <label for="num2">Number 2:</label>
+        <input type="number" name="num2" id="num2" required>
+        <br>
+
+        <label for="operator">Operator:</label>
+        <select name="operator" id="operator" required>
+            <option value="add">+</option>
+            <option value="subtract">-</option>
+            <option value="multiply">*</option>
+            <option value="divide">/</option>
+        </select>
+        <br>
+
+        <button type="submit">Calculate</button>
+
+    </form>
+
+    <div id="result"></div>
+
+    <script>
+        const form = document.getElementById('calculatorForm');
+        const result = document.getElementById('result');
+
+        form.addEventListener('submit', (event) => {
+            event.preventDefault();
+            const num1 = form.num1.value;
+            const num2 = form.num2.value;
+            const operator = form.operator.value;
+
+            fetch(`http://localhost:3000/calculate/${operator}/${num1}/${num2}`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.error) {
+                        result.textContent = data.error;
+                    } else {
+                        result.textContent = data.result;
+                    }
+                })
+                .catch(error => console.error(error));
+        });
+    </script>
 </body>
 
 </html>

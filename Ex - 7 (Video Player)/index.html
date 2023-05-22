@@ -24,26 +24,45 @@
 
 <body ng-controller="videoPlayerCtrl">
     <h1>AngularJS Video Player</h1>
-    <video ng-src="{{videoUrl}}" controls></video>
+
+    <video ng-src="{{videoUrl}}" controls id="videoplayer"></video>
     <br>
+
     <button ng-click="play()">Play</button>
     <button ng-click="pause()">Pause</button>
     <button ng-click="replay()">Replay</button>
+    <br>
+
+    <label for="speed">Playback Speed:</label>
+    <select id="speed" ng-model="selectedSpeed" ng-change="changeSpeed()">
+        <option value="1">Normal</option>
+        <option value="0.5">0.5x</option>
+        <option value="1.5">1.5x</option>
+        <option value="2">2x</option>
+    </select>
+
     <script>
         var app = angular.module("videoPlayer", []);
 
         app.controller("videoPlayerCtrl", function ($scope) {
             $scope.videoUrl = "https://res.cloudinary.com/codelife/video/upload/v1637805738/intro_l5ul1k.mp4";
-            var video = document.getElementsByTagName("video")[0];
+            $scope.selectedSpeed = "1";
+            var video = document.getElementById("videoplayer");
             $scope.play = function () {
                 video.play();
             };
+
             $scope.pause = function () {
                 video.pause();
             };
+
             $scope.replay = function () {
                 video.currentTime = 0;
                 video.pause();
+            };
+
+            $scope.changeSpeed = function () {
+                video.playbackRate = parseFloat($scope.selectedSpeed);
             };
         });
     </script>
