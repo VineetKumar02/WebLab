@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div ng-if="moveUp" ng-class="{ yellow : changeColor}" class="moveUpDown highlight container">
+        <p>Hello World!</p>
+    </div>
+
+</body>
+
+</html>
+
+<style>
+
+</style>
+
+<script>
+    $scope.drawTeddyBear = function () {
+        var canvas = document.getElementById("canvas");
+        var ctx = canvas.getContext("2d");
+
+        // Clear canvas
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        // Get coordinates from inputs
+        var x = $scope.xCoordinate;
+        var y = $scope.yCoordinate;
+
+        ctx.beginPath();
+        ctx.arc(x, y, 50, 0, 2 * Math.PI); // head
+        ctx.arc(x - 40, y - 40, 20, 0, 2 * Math.PI); // ear
+        ctx.moveTo(x + 40, y - 40);
+        ctx.arc(x + 40, y - 40, 20, 0, 2 * Math.PI); // ear
+        // body
+        ctx.moveTo(x, y + 80);
+        ctx.ellipse(x, y + 80, 55, 70, 0, 0, 2 * Math.PI);
+        // left hand
+        ctx.moveTo(x - 60, y + 80);
+        ctx.ellipse(x - 60, y + 80, 20, 40, -100, 0, 2 * Math.PI);
+        // right hand
+        ctx.moveTo(x + 60, y + 80);
+        ctx.ellipse(x + 60, y + 80, 20, 40, 100, 0, 2 * Math.PI);
+        // left leg
+        ctx.moveTo(x - 25, y + 150);
+        ctx.ellipse(x - 25, y + 150, 20, 40, -100, 0, 2 * Math.PI);
+        // right leg
+        ctx.moveTo(x + 25, y + 150);
+        ctx.ellipse(x + 25, y + 150, 20, 40, 100, 0, 2 * Math.PI);
+
+        ctx.fillStyle = "brown";
+        ctx.fill();
+        
+    };
+</script>
